@@ -1,0 +1,30 @@
+spring: 
+    profiles: 
+        active: dev
+
+---
+server: 
+    port: 8201
+spring: 
+    profiles: dev
+    application:
+        name: springcloud-sgg-config-client
+
+#在实际应用中，不同profile的注册中心地址应当是不一样的！
+eureka: 
+    client: 
+        service-url: 
+            defaultZone: http://localhost:7001/eureka/
+
+---
+server: 
+    port: 8202
+spring: 
+    profiles: test
+    application:
+        name: springcloud-sgg-config-client
+
+eureka: 
+    client: 
+        service-url: 
+            defaultZone: http://localhost:7001/eureka/
