@@ -1,0 +1,83 @@
+spring: 
+  profiles: 
+    active: dev
+---
+spring: 
+  profiles: dev
+  application:
+    name: springcloud-sgg-config-client-provider
+  datasource: 
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/springcloud
+    username: root
+    password: sun159
+    dbcp2: 
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 200
+
+server: 
+  port: 8001
+
+mybatis: 
+  config-location: classpath:mybatis/mybatis.cfg.xml
+  type-aliases-package: org.sunjiabo.springcloud.entity
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml
+
+eureka: 
+  client: 
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+  instance: 
+    instance-id: springcloud-sgg-config-client-provider-8001
+    prefer-ip-address: true
+
+info:
+  app.name: springcloud-sgg-config-client-provider
+  company.name: org.sunjiabo
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+---
+
+spring: 
+  profiles: test
+  application:
+    name: springcloud-sgg-config-client-provider
+  datasource: 
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/springcloud
+    username: root
+    password: sun159
+    dbcp2: 
+      min-idle: 5
+      initial-size: 5
+      max-total: 5
+      max-wait-millis: 200
+
+#使用不同的端口来演示profile切换
+server: 
+  port: 8002
+
+mybatis: 
+  config-location: classpath:mybatis/mybatis.cfg.xml
+  type-aliases-package: org.sunjiabo.springcloud.entity
+  mapper-locations:
+  - classpath:mybatis/mapper/**/*.xml
+
+eureka: 
+  client: 
+    service-url:
+      defaultZone: http://localhost:7001/eureka/
+  instance: 
+    instance-id: springcloud-sgg-config-client-provider-8001
+    prefer-ip-address: true
+
+info:
+  app.name: springcloud-sgg-config-client-provider
+  company.name: org.sunjiabo
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
