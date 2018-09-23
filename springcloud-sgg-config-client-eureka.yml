@@ -4,7 +4,7 @@ spring:
 
 ---
 spring: 
-  profiles: test
+  profiles: dev
   application: 
     name: springcloud-sgg-config-client-eureka
 
